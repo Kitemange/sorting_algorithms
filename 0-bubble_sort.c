@@ -1,5 +1,19 @@
 #include "sort.h"
 #include <stdbool.h>
+
+/**
+ *swap - swaps two integers.
+ *@xp: Pointer to the first integer.
+ *@yp: Pointer tothe second integer.
+ *Return: Nothing.
+ */
+void swap(int *xp, int *yp)
+{
+	int temp = *xp;
+	*xp = *yp;
+	*yp = temp;
+}
+
 /**
  * bubble_sort - The function to sort an array
  * @array: The array to be sorted
@@ -17,9 +31,7 @@ void bubble_sort(int *array, size_t size)
 		{
 			if (array[j] > array[j + 1])
 			{
-				temp = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = temp;
+				swap(&array[j], &array[j + 1]);
 				swapped = true;
 				print_array(array, size);
 			}
