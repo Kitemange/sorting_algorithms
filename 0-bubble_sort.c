@@ -1,40 +1,30 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include "sort.h"
-
-
-
-void swap(int *p, int *n)
-{
-    int temp = *p;
-    *p = *n;
-    *n = temp;
-}
+#include <stdbool.h>
+/**
+ * bubble_sort - The function to sort an array
+ * @array: The array to be sorted
+ * @size: The number of elements in the arraiy
+ */
 void bubble_sort(int *array, size_t size)
 {
-    size_t k, b;
-    bool swapped;
+	size_t i = 0, j = 0, temp;
+	bool swapped;
 
-    if (array == NULL || size == 0)
-        return;
-
-    for (k = 0; k < size - 1; k++)
-    {
-        swapped = false;
-        for (b = 0; b < size - 1; b++)
-        {
-            if (array[b] > array[b + 1])
-            {
-                swap(&array[b], & array[b + 1]);
-                swapped = true;
-                print_array(array, size);
-            }            
-        }
-        if (swapped == false)
+	for (i = 0; i < size; i++)
+	{
+		swapped = false;
+		for (j = 0; j < size - i - 1; j++)
+		{
+			if (array[j] > array[j + 1])
+			{
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+				swapped = true;
+				print_array(array, size);
+			}
+		}
+		if (swapped == false)
 			break;
-    }
-    
+	}
 }
-
-
