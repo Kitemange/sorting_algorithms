@@ -9,44 +9,44 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *head_tmp1, *head_tmp2, *aux1, *aux2;
+	listint_t *temp1, *tmp2, *x1, *x2;
 	int flag;
 
 	if (list)
 	{
-		head_tmp1 = *list;
-		head_tmp2 = *list;
-		while (list && head_tmp1->next)
+		temp1 = *list;
+		tmp2 = *list;
+		while (list && temp1->next)
 		{
-			if (head_tmp1->next)
+			if (temp1->next)
 			{
 				flag = 0;
-				head_tmp2 = head_tmp1;
-				while (head_tmp2 && head_tmp2->n > head_tmp2->next->n)
+				tmp2 = temp1;
+				while (tmp2 && tmp2->n > tmp2->next->n)
 				{
-					aux1 = head_tmp2;
-					aux2 = head_tmp2->next;
-					aux1->next = aux2->next;
-					if (aux2->next)
-						aux2->next->prev = aux1;
-					if (aux2)
+					x1 = tmp2;
+					x2 = tmp2->next;
+					x1->next = x2->next;
+					if (x2->next)
+						x2->next->prev = x1;
+					if (x2)
 					{
-						aux2->prev = aux1->prev;
-						aux2->next = aux1;
+						x2->prev = x1->prev;
+						x2->next = x1;
 					}
-					if (aux1)
-						aux1->prev = aux2;
-					if (aux2->prev)
-						aux2->prev->next = aux2;
-					head_tmp2 = aux2->prev;
-					if (!aux2->prev)
-						*list = aux2;
+					if (x1)
+						x1->prev = x2;
+					if (x2->prev)
+						x2->prev->next = x2;
+					tmp2 = x2->prev;
+					if (!x2->prev)
+						*list = x2;
 					print_list(*list);
 					flag = 1;
 				}
 			}
 			if (flag == 0)
-				head_tmp1 = head_tmp1->next;
+				temp1 = temp1->next;
 		}
 	}
 }
